@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html<head><html lang="en">
+  <meta charset="UTF-8" />
+  <title>WCAG 2.4.7 – Focus Visible Examples</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      margin-top: 24px;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 16px;
+      margin-top: 16px;
+      border: 2px solid #ccc;
+    }
+
+    .pass {
+      border-color: #2ecc71;
+    }
+
+    .fail {
+      border-color: #c0392b;
+    }
+
+    button, a, input {
+      margin: 8px 8px 8px 0;
+      padding: 8px 12px;
+      font-size: 16px;
+    }
+
+    /* ✅ PASSING: clearly visible focus indicator */
+    .pass button:focus,
+    .pass a:focus,
+    .pass input:focus {
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
+      background-color: #e6f2ff;
+    }
+
+    /* ❌ FAILING: focus indicator removed */
+    .fail button:focus,
+    .fail a:focus,
+    .fail input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    header {
+      background-color: #003366;
+      padding: 16px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:focus,
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 24px;
+    }
+    img {
+      padding: 8px 12px;
+      margin-top: 8px;
+      height: 144px;
+      width: 244px;
+      cursor: pointer;
+    }
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 2px solid #ccc;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      border-left: 4px solid #2b6cff;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+<h1>
+<a href="https://www.w3.org/TR/WCAG22/">
+  <img src="WCAG logo.png" alt="WCAG Logo">
+</a>
+</h1>
+    <nav aria-label="Primary Navigation">
+      <a href="index.html">Home</a>
+      <a href="Text spacing.html">Text Spacing</a>
+      <a href="Timing adjustable.html">Timing Adjustable</a>
+      <a href="Play pause and stop.html">Pause Stop Hide</a>
+      <a href="Three flashes.html">Three Flashes or Below Threshold</a>
+      <a href="Focus visible.html">Focus Visible</a>
+      <a href="Consistent Navigation and identification.html">Consistent Navigation &amp; Identification</a>
+      <a href="form.html">Checkout Form</a>
+    </nav>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <main>
+
+
+  <h1>WCAG 2.4.7 – Focus Visible</h1>
+
+  <p>
+    Use the <strong>Tab</strong> key to navigate through the controls below.
+    Observe whether the keyboard focus is visible.
+  </p>
+
+  <!-- ✅ PASSING EXAMPLE -->
+  <h2>✅ Passing Example (Focus Clearly Visible)</h2>
+  <div class="container pass">
+    <span class="label">Why this PASSES:</span>
+    <ul>
+      <li>Focus is visually distinct</li>
+      <li>High contrast focus outline</li>
+      <li>Easy to track keyboard position</li>
+    </ul>
+
+    <a href="#">Focusable Link</a>
+    <button>Focusable Button</button>
+    <input type="text" placeholder="Focusable Input" />
+  </div>
+
+  <!-- ❌ FAILING EXAMPLE -->
+  <h2>❌ Failing Example (Focus Not Visible)</h2>
+  <div class="container fail">
+    <span class="label">Why this FAILS:</span>
+    <ul>
+      <li>Focus indicator removed via CSS</li>
+      <li>Keyboard users cannot see focus</li>
+    </ul>
+
+    <a href="#">Focusable Link</a>
+    <button>Focusable Button</button>
+    <input type="text" placeholder="Focusable Input" />
+  </div>
+
+  <div class="note">
+    <strong>Accessibility Tip:</strong><br />
+    Never remove the focus outline unless you replace it with
+    an equally visible and accessible alternative.
+  </div>
+</main>
+</body>
+</html>

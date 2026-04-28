@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WCAG 3.2.3 & 3.2.4 – Consistency Examples</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      margin-top: 24px;
+    }
+
+/*    nav {
+      background: #eef3ff;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    nav a {
+      margin-right: 16px;
+      font-weight: bold;
+    }
+*/
+    .container {
+      background: #1B75BC;
+      padding: 16px;
+      margin-top: 16px;
+      border: 2px solid #ccc;
+    }
+
+    .pass {
+      border-color: #2ecc71;
+    }
+
+    .fail {
+      border-color: #c0392b;
+    }
+
+    .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+    img {
+      padding: 8px 12px;
+      margin-top: 8px;
+      height: 144px;
+      width: 244px;
+      cursor: pointer;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      margin-top: 24px;
+      border-left: 4px solid #2b6cff;
+    }
+  header {
+      background-color: #003366;
+      padding: 16px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:focus,
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 24px;
+    }
+
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 2px solid #ccc;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      border-left: 4px solid #2b6cff;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+<h1>
+<a href="https://www.w3.org/TR/WCAG22/">
+  <img src="WCAG logo.png" alt="WCAG Logo">
+</a>
+</h1>
+    <nav aria-label="Primary Navigation">
+      <a href="index.html">Home</a>
+      <a href="Three flashes.html">Three Flashes or Below Threshold</a>
+      <a href="Focus visible.html">Focus Visible</a>
+      <a href="Consistent Navigation and identification.html">Consistent Navigation &amp; Identification</a>
+      <a href="Text spacing.html">Text Spacing</a>
+      <a href="Timing adjustable.html">Timing Adjustable</a>
+      <a href="Play pause and stop.html">Pause Stop Hide</a>
+      <a href="form.html">Checkout Form</a>
+    </nav>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <main>
+
+
+  <h1>WCAG 3.2 – Consistency</h1>
+
+  <p>
+    This page demonstrates <strong>consistent navigation</strong> and
+    <strong>consistent identification</strong> with passing and failing examples.
+  </p>
+
+  <!-- ============================= -->
+  <!-- CONSISTENT NAVIGATION -->
+  <!-- ============================= -->
+
+  <h2>3.2.3 – Consistent Navigation</h2>
+
+  <!-- ✅ PASSING NAVIGATION -->
+  <h3>✅ Passing Example (Navigation is Consistent)</h3>
+  <div class="container pass">
+    <span class="label">Why this PASSES:</span>
+    <ul>
+      <li>Navigation appears in the same order</li>
+      <li>Same labels used across pages</li>
+      <li>Position remains consistent</li>
+    </ul>
+
+    <nav aria-label="Primary Navigation">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Support</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <p>This navigation would appear the same on every page.</p>
+  </div>
+
+  <!-- ❌ FAILING NAVIGATION -->
+  <h3>❌ Failing Example (Navigation is Inconsistent)</h3>
+  <div class="container fail">
+    <span class="label">Why this FAILS:</span>
+    <ul>
+      <li>Navigation order changes</li>
+      <li>Labels are different for the same destination</li>
+    </ul>
+
+    <!-- Page A navigation -->
+    <nav aria-label="Primary Navigation - Page A">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Help</a>
+    </nav>
+
+    <!-- Page B navigation (inconsistent) -->
+    <nav aria-label="Primary Navigation - Page B" style="margin-top:12px;">
+      <a href="#">Start</a>
+      <a href="#">Help</a>
+      <a href="#">Shop</a>
+    </nav>
+
+    <p>
+      Users cannot rely on navigation location or labels being consistent.
+    </p>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CONSISTENT IDENTIFICATION -->
+  <!-- ============================= -->
+
+  <h2>3.2.4 – Consistent Identification</h2>
+
+  <!-- ✅ PASSING IDENTIFICATION -->
+  <h3>✅ Passing Example (Controls Identified Consistently)</h3>
+  <div class="container pass">
+    <span class="label">Why this PASSES:</span>
+    <ul>
+      <li>Same control uses the same label everywhere</li>
+      <li>No confusion for screen reader or cognitive users</li>
+    </ul>
+
+    <button aria-label="Search">Search</button>
+    <p>This "Search" button is labeled the same across all pages.</p>
+  </div>
+
+  <!-- ❌ FAILING IDENTIFICATION -->
+  <h3>❌ Failing Example (Controls Identified Inconsistently)</h3>
+  <div class="container fail">
+    <span class="label">Why this FAILS:</span>
+    <ul>
+      <li>Same function uses different labels</li>
+      <li>Creates confusion for assistive technology users</li>
+    </ul>
+
+    <button aria-label="Search">Search</button><br />
+    <button aria-label="Find" style="margin-top:8px;">Find</button>
+
+    <p>
+      Both buttons perform the same action but are identified differently.
+    </p>
+  </div>
+
+  <div class="note">
+    <strong>Accessibility Tip:</strong><br />
+    When navigation mechanisms or components are repeated,
+    they must appear and be identified consistently unless a change
+    is initiated by the user.
+  </div>
+</main>
+</body>
+</html>

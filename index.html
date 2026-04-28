@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accessibility WCAG Examples</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      line-height: 1.5;
+    }
+
+    header {
+      background-color: #003366;
+      padding: 16px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:focus,
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 24px;
+    }
+      img {
+      padding: 8px 12px;
+      margin-top: 8px;
+      height: 144px;
+      width: 244px;
+      cursor: pointer;
+    }
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 2px solid #ccc;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      border-left: 4px solid #2b6cff;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+<h1>
+<a href="https://www.w3.org/TR/WCAG22/">
+  <img src="WCAG logo.png" alt="WCAG Logo">
+</a>
+</h1>
+    <nav aria-label="Primary Navigation">
+      <a href="index.html">Home</a>
+      <a href="Text spacing.html">Text Spacing</a>
+      <a href="Timing adjustable.html">Timing Adjustable</a>
+      <a href="Play pause and stop.html">Pause Stop Hide</a>
+      <a href="Three flashes.html">Three Flashes or Below Threshold</a>
+      <a href="Focus visible.html">Focus Visible</a>
+      <a href="Consistent Navigation and identification.html">Consistent Navigation &amp; Identification</a>
+      <a href="form.html">Checkout Form</a>
+    </nav>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <main>
+
+    <section id="text-spacing">
+      <h2>Text Spacing (WCAG 1.4.12)</h2>
+      <p>
+        Text spacing allows users to adjust line height, word spacing, letter spacing,
+        and paragraph spacing without losing content or functionality.
+      </p>
+
+      <div class="impact">
+        <strong>Impact on Neurodivergent Users:</strong>
+        <ul>
+          <li>People with dyslexia benefit from increased spacing, which improves reading accuracy.</li>
+          <li>Autistic users may find tightly packed text overwhelming or visually stressful.</li>
+          <li>Cognitive fatigue is reduced when text is easier to visually parse.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="timing-adjustable">
+      <h2>Timing Adjustable (WCAG 2.2.1)</h2>
+      <p>
+        Users must be able to extend, adjust, or turn off time limits unless timing is essential.
+      </p>
+
+      <div class="impact">
+        <strong>Impact on Neurodivergent Users:</strong>
+        <ul>
+          <li>Users with ADHD may need additional time to complete tasks.</li>
+          <li>Anxiety can increase significantly when users fear sudden timeouts.</li>
+          <li>People with processing or memory challenges need control over pacing.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="pause-stop-hide">
+      <h2>Pause, Stop, Hide (WCAG 2.2.2)</h2>
+      <p>
+        Moving, blinking, or auto-updating content must have controls to pause, stop, or hide it.
+      </p>
+
+      <div class="impact">
+        <strong>Impact on Neurodivergent Users:</strong>
+        <ul>
+          <li>Autistic users may find motion distracting or distressing.</li>
+          <li>ADHD users may be unable to focus when content constantly moves.</li>
+          <li>Motion can cause sensory overload or migraines.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="three-flashes">
+      <h2>Three Flashes or Below Threshold (WCAG 2.3.1)</h2>
+      <p>
+        Content must not flash more than three times per second unless below safe thresholds.
+      </p>
+
+      <div class="impact">
+        <strong>Impact on Neurodivergent Users:</strong>
+        <ul>
+          <li>Flashing content can trigger seizures in users with photosensitive epilepsy.</li>
+          <li>It can cause extreme discomfort for autistic users with sensory sensitivity.</li>
+          <li>Fast flashing can induce headaches, dizziness, or anxiety.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="focus-visible">
+      <h2>Focus Visible (WCAG 2.4.7)</h2>
+      <p>
+        Keyboard focus must always be visible so users know where they are on the page.
+      </p>
+
+      <div class="impact">
+        <strong>Impact on Neurodivergent Users:</strong>
+        <ul>
+          <li>Users who rely on keyboards need clear focus to avoid confusion.</li>
+          <li>Focus visibility reduces cognitive load and navigation errors.</li>
+          <li>It helps users build a predictable mental model of the interface.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="consistent">
+      <h2>Consistent Navigation &amp; Identification (WCAG 3.2.3 &amp; 3.2.4)</h2>
+      <p>
+        Navigation and components must be presented and identified consistently across pages.
+      </p>
+
+      <div class="impact">
+        <strong>Impact on Neurodivergent Users:</strong>
+        <ul>
+          <li>Inconsistent navigation increases confusion and anxiety.</li>
+          <li>Autistic users rely heavily on predictable patterns.</li>
+          <li>Consistent labels help users with memory or processing challenges.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+
+</body>
+</html>
+``

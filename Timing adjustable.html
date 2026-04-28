@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WCAG 2.2.1 – Timing Adjustable Examples</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      margin-top: 24px;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 16px;
+      margin-top: 16px;
+      border: 2px solid #ccc;
+    }
+
+    .pass {
+      border-color: #2ecc71;
+    }
+
+    .fail {
+      border-color: #c0392b;
+    }
+
+    .box {
+      padding: 16px;
+      background-color: #ecf0f1;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    button {
+      margin-right: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    .warning {
+      color: #c0392b;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      margin-top: 24px;
+      border-left: 4px solid #2b6cff;
+    }
+    header {
+      background-color: #003366;
+      padding: 16px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:focus,
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 24px;
+    }
+    img {
+      padding: 8px 12px;
+      margin-top: 8px;
+      height: 144px;
+      width: 244px;
+      cursor: pointer;
+    }
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 2px solid #ccc;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      border-left: 4px solid #2b6cff;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+<h1>
+<a href="https://www.w3.org/TR/WCAG22/">
+  <img src="WCAG logo.png" alt="WCAG Logo">
+</a>
+</h1>
+    <nav aria-label="Primary Navigation">
+      <a href="index.html">Home</a>
+      <a href="Text spacing.html">Text Spacing</a>
+      <a href="Timing adjustable.html">Timing Adjustable</a>
+      <a href="Play pause and stop.html">Pause Stop Hide</a>
+      <a href="Three flashes.html">Three Flashes or Below Threshold</a>
+      <a href="Focus visible.html">Focus Visible</a>
+      <a href="Consistent Navigation and identification.html">Consistent Navigation &amp; Identification</a>
+      <a href="form.html">Checkout Form</a>
+    </nav>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <main>
+
+
+  <h1>WCAG 2.2.1 – Timing Adjustable</h1>
+  <p>
+    This page demonstrates timed content that
+    <strong>meets</strong> and <strong>fails</strong>
+    WCAG requirements for adjustable time limits.
+  </p>
+
+  <!-- ✅ PASSING EXAMPLE -->
+  <h2>✅ Passing Example (Timing Adjustable)</h2>
+  <div class="container pass">
+    <span class="label">Why this PASSES:</span>
+    <ul>
+      <li>User is warned before time expires</li>
+      <li>User can extend the time</li>
+      <li>User can turn off the timer</li>
+    </ul>
+
+    <div id="passBox" class="box">
+      Time remaining: <span id="timeLeft">10</span> seconds
+    </div>
+
+    <div style="margin-top: 12px;">
+      <button onclick="extendTime()">Extend Time</button>
+      <button onclick="disableTimer()">Turn Off Timer</button>
+    </div>
+
+    <div id="passWarning" class="warning" style="display:none;">
+      ⚠ Time is about to expire!
+    </div>
+  </div>
+
+  <!-- ❌ FAILING EXAMPLE -->
+  <h2>❌ Failing Example (No Time Control)</h2>
+  <div class="container fail">
+    <span class="label">Why this FAILS:</span>
+    <ul>
+      <li>Times out automatically</li>
+      <li>No warning given</li>
+      <li>No ability to extend or disable time</li>
+    </ul>
+
+    <div id="failBox" class="box">
+      Session will expire in <span id="failTime">5</span> seconds
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Accessibility Tip:</strong><br>
+    Time limits are acceptable only if users can
+    turn them off, adjust them, or extend them.
+    Exceptions apply only when timing is essential
+    (e.g. auctions, real‑time games).
+  </div>
+
+  <script>
+    /* PASSING TIMER */
+    let timeLeft = 10;
+    let passTimer = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timeLeft").textContent = timeLeft;
+
+      if (timeLeft === 3) {
+        document.getElementById("passWarning").style.display = "block";
+      }
+
+      if (timeLeft <= 0) {
+        clearInterval(passTimer);
+        document.getElementById("passBox").textContent = "Time expired (user could extend)";
+      }
+    }, 1000);
+
+    function extendTime() {
+      timeLeft += 10;
+      document.getElementById("passWarning").style.display = "none";
+    }
+
+    function disableTimer() {
+      clearInterval(passTimer);
+      document.getElementById("passBox").textContent = "Timer turned off by user";
+      document.getElementById("passWarning").style.display = "none";
+    }
+
+    /* FAILING TIMER */
+    let failTime = 5;
+    let failTimer = setInterval(() => {
+      failTime--;
+      document.getElementById("failTime").textContent = failTime;
+      if (failTime <= 0) {
+        clearInterval(failTimer);
+        document.getElementById("failBox").textContent = "Session expired (no user control)";
+      }
+    }, 1000);
+  </script>
+</main>
+</body>
+</html>

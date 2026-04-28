@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="<title>Post‑Shopping Address Form</title><html lang="en">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    line-height: 1.5;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 14px;
+  }
+
+  .required::after {
+    content: " *";
+    color: #b00020;
+  }
+
+  input, select, textarea {
+    width: 30%;
+    padding: 8px;
+    margin-top: 4px;
+    font-size: 1rem;
+  }
+
+  textarea {
+    min-height: 70px;
+  }
+
+  fieldset {
+    margin-top: 20px;
+    padding: 16px;
+  }
+
+  .info {
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 6px;
+  }
+
+  .tooltip {
+    font-size: 0.85rem;
+    color: #555;
+  }
+
+  .error-text {
+    color: #b00020;
+    font-size: 0.9rem;
+  }
+
+  .error input,
+  .error select,
+  .error textarea {
+    border: 3px solid #b00020;
+  }
+
+  button {
+    margin-top: 24px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  /* Focus indicator ≥ 3:1 contrast */
+  :focus {
+    outline: 4px solid #005fcc;
+    outline-offset: 2px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .sr-only {
+    position: absolute;
+    left: -9999px;
+  }
+ header {
+      background-color: #003366;
+      padding: 16px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:focus,
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 24px;
+    }
+      img {
+      padding: 8px 12px;
+      margin-top: 8px;
+      height: 144px;
+      width: 244px;
+      cursor: pointer;
+    }
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 2px solid #ccc;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      border-left: 4px solid #2b6cff;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+<h1>
+<a href="https://www.w3.org/TR/WCAG22/">
+  <img src="WCAG logo.png" alt="WCAG Logo">
+</a>
+</h1>
+    <nav aria-label="Primary Navigation">
+      <a href="index.html">Home</a>
+      <a href="Text spacing.html">Text Spacing</a>
+      <a href="Timing adjustable.html">Timing Adjustable</a>
+      <a href="Play pause and stop.html">Pause Stop Hide</a>
+      <a href="Three flashes.html">Three Flashes or Below Threshold</a>
+      <a href="Focus visible.html">Focus Visible</a>
+      <a href="Consistent Navigation and identification.html">Consistent Navigation &amp; Identification</a>
+      <a href="form.html">Checkout Form</a>
+    </nav>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <main>
+
+
+<h1>Shopping Cart</h1>
+
+<!-- Form selector -->
+<label for="formType">Select Form Version</label>
+<select id="formType" onchange="toggleForm()">
+  <option value="accessible">Accessible Form</option>
+  <option value="inaccessible">Inaccessible Form</option>
+</select>
+
+<p class="tooltip">
+Select the form version
+</p>
+
+<!-- ================= ACCESSIBLE FORM ================= -->
+<form id="accessibleForm" novalidate>
+<h2>Accessible checkout Form</h2>
+<p><strong>* indicates required fields</strong></p>
+
+<fieldset>
+<legend>Shipping Address</legend>
+
+<div class="field">
+  <label class="required" for="street">
+    Street Address
+    <span class="info" aria-describedby="streetTip"></span>
+  </label>
+  
+  <textarea id="street" required aria-describedby="streetTip"></textarea>
+  <div class="error-text"></div>
+<span id="streetTip" class="tooltip">
+    Enter full address including apartment or unit number.
+  </span>
+</div>
+
+<div class="field">
+  <label class="required" for="city">
+    City <span class="info" aria-describedby="cityTip"></span>
+  </label>
+  
+  <input id="city" required aria-describedby="cityTip">
+  <div class="error-text"></div>
+<span id="cityTip" class="tooltip">Enter city name only.</span>
+</div>
+
+<div class="field">
+  <label class="required" for="state">
+    State <span class="info" aria-describedby="stateTip"></span>
+  </label>
+  
+  <select id="state" required aria-describedby="stateTip">
+    <option value="">Select</option>
+    <option>Telangana</option>
+    <option>Karnataka</option>
+    <option>Maharashtra</option>
+  </select>
+  <div class="error-text"></div>
+<span id="stateTip" class="tooltip">Select your state.</span>
+</div>
+
+<div class="field">
+  <label class="required" for="country">
+    Country <span class="info" aria-describedby="countryTip"></span>
+  </label>
+  <select id="country" required aria-describedby="countryTip">
+    <option value="">Select</option>
+    <option>India</option>
+    <option>United States</option>
+  </select>
+  <div class="error-text"></div>
+  <span id="countryTip" class="tooltip">Select delivery country.</span>
+
+</div>
+
+<div class="field">
+  <label class="required" for="zip">
+    ZIP / Postal Code <span class="info" aria-describedby="zipTip"></span>
+  </label>
+  <input id="zip" required pattern="^\d{5,6}$"
+         aria-describedby="zipTip">
+  <div class="error-text"></div>
+  <span id="zipTip" class="tooltip">5 or 6 digits only.</span>
+
+</div>
+
+<div class="field">
+  <label class="required" for="phone">
+    WhatsApp Number <span class="info" aria-describedby="phoneTip"></span>
+  </label>
+  <input id="phone" required pattern="^\d{10,15}$"
+         aria-describedby="phoneTip">
+  <div class="error-text"></div>
+  <span id="phoneTip" class="tooltip">10–15 digits, numbers only.</span>
+
+</div>
+
+<div class="field">
+  <label class="required" for="date">
+    Delivery Date <span class="info" aria-describedby="dateTip"></span>
+  </label>
+  <input id="date" required placeholder="MM/DD/YY"
+         pattern="^(0[1-9]|1[0-2])\/\d{2}\/\d{2}$"
+         aria-describedby="dateTip">
+  <div class="error-text"></div>
+  <span id="dateTip" class="tooltip">MM/DD/YY format.</span>
+
+</div>
+<div>
+<label>
+<span class="required" for="sameBilling"> Billing address is same as shipping address </span>
+  <input type="checkbox" id="sameBilling" checked onchange="toggleBilling()">
+  </label>
+
+</div>
+</fieldset>
+
+<fieldset id="billing" class="hidden">
+<legend>Billing Address</legend>
+
+<label class="required">Street Address</label>
+<textarea required></textarea>
+
+<label class="required">City</label>
+<input required>
+
+<label class="required">State</label>
+<select required>
+  <option value="">Select</option>
+  <option>Telangana</option>
+</select>
+
+<label class="required">Country</label>
+<select required>
+  <option value="">Select</option>
+  <option>India</option>
+</select>
+
+<label class="required">ZIP / Postal Code</label>
+<input required pattern="^\d{5,6}$">
+
+<label class="required">WhatsApp Number</label>
+<input required pattern="^\d{10,15}$">
+</fieldset>
+
+<button type="submit">Submit</button>
+</form>
+
+<!-- ================= INACCESSIBLE FORM ================= -->
+<form id="inaccessibleForm" class="hidden">
+<h2>Inaccessible checkout form</h2>
+
+<textarea placeholder="Address"></textarea>
+<input placeholder="City">
+<select><option>State</option></select>
+<select><option>Country</option></select>
+<input placeholder="ZIP">
+<input placeholder="Phone">
+<input placeholder="MM/DD/YY">
+
+<label>
+  <input type="checkbox"> Same billing
+</label>
+
+<button onclick="alert('Submitted')">Submit</button>
+</form>
+
+<script>
+function toggleForm() {
+  const value = document.getElementById("formType").value;
+  document.getElementById("accessibleForm").classList.toggle("hidden", value !== "accessible");
+  document.getElementById("inaccessibleForm").classList.toggle("hidden", value !== "inaccessible");
+}
+
+function toggleBilling() {
+  document.getElementById("billing").classList.toggle(
+    "hidden",
+    document.getElementById("sameBilling").checked
+  );
+}
+
+document.getElementById("accessibleForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let firstError = null;
+
+  this.querySelectorAll(".field").forEach(field => {
+    const input = field.querySelector("[required]");
+    const error = field.querySelector(".error-text");
+    field.classList.remove("error");
+    if (input) input.removeAttribute("aria-invalid");
+    if (error) error.textContent = "";
+
+    if (input && !input.checkValidity()) {
+      field.classList.add("error");
+      input.setAttribute("aria-invalid", "true");
+      error.textContent = "Please enter a valid value.";
+      if (!firstError) firstError = input;
+    }
+  });
+
+  if (firstError) {
+    firstError.focus();
+  } else {
+    alert("✅ Address submitted successfully.");
+  }
+});
+</script>
+</main>
+</body>
+</html>
+<head>
+<meta charset="UTF-8">

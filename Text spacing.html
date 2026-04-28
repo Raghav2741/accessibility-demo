@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WCAG 1.4.12 – Adopting vs Not Adopting Text Spacing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      margin-top: 24px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .container {
+      background: #fff;
+      padding: 16px;
+      margin-top: 16px;
+      border: 2px solid #ccc;
+    }
+
+    /* =====================================
+       USER-APPLIED TEXT SPACING (SIMULATION)
+       ===================================== */
+    body.user-spacing .adopting {
+      line-height: 1.5;
+      letter-spacing: 0.12em;
+      word-spacing: 0.16em;
+    }
+
+    body.user-spacing .adopting p {
+      margin-bottom: 2em;
+    }
+
+    /* =====================================
+       CONTENT THAT DOES NOT ADOPT SPACING
+       ===================================== */
+    .not-adopting {
+      line-height: 1;
+      letter-spacing: normal;
+      word-spacing: normal;
+      height: 70px;           /* Fixed height */
+      overflow: hidden;      /* Text gets clipped */
+      white-space: nowrap;   /* Prevents reflow */
+      border-color: #c0392b;
+    }
+
+    /* Visual labels */
+    .pass {
+      border-color: #2ecc71;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .note {
+      margin-top: 24px;
+      background: #eaf2ff;
+      padding: 12px;
+      border-left: 4px solid #2b6cff;
+    }
+   header {
+      background-color: #003366;
+      padding: 16px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-size: 22px;
+    }
+    nav a {
+      color: #ffffff;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:focus,
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 24px;
+    }
+    img {
+      padding: 8px 12px;
+      margin-top: 8px;
+      height: 144px;
+      width: 244px;
+      cursor: pointer;
+    }
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border: 2px solid #ccc;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    .note {
+      background: #eef3ff;
+      padding: 12px;
+      border-left: 4px solid #2b6cff;
+      margin-top: 12px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+    <h1>
+<a href="https://www.w3.org/TR/WCAG22/">
+  <img src="WCAG logo.png" alt="WCAG Logo">
+</a>
+</h1>
+    <nav aria-label="Primary Navigation">
+      <a href="index.html">Home</a>
+      <a href="Text spacing.html">Text Spacing</a>
+      <a href="Timing adjustable.html">Timing Adjustable</a>
+      <a href="Play pause and stop.html">Pause Stop Hide</a>
+      <a href="Three flashes.html">Three Flashes or Below Threshold</a>
+      <a href="Focus visible.html">Focus Visible</a>
+      <a href="Consistent Navigation and identification.html">Consistent Navigation &amp; Identification</a>
+      <a href="form.html">Checkout Form</a>
+    </nav>
+  </header>
+
+  <!-- ================= CONTENT ================= -->
+  <main>
+  <h1>WCAG 1.4.12 – Text Spacing</h1>
+
+  <p>
+    Use the button below to simulate a user applying custom text spacing
+    (such as via browser or accessibility tools).
+  </p>
+
+  <button onclick="document.body.classList.toggle('user-spacing')">
+    Toggle User Text Spacing
+  </button>
+
+  <!-- ✅ ADOPTING CONTENT -->
+  <h2>✅ Content Adopting Text Spacing (Pass)</h2>
+  <div class="container adopting pass">
+    <span class="label">Why this PASSES:</span>
+    <ul>
+      <li>No fixed height</li>
+      <li>No overflow hidden</li>
+      <li>Uses relative spacing</li>
+    </ul>
+
+    <p>
+      This paragraph correctly adapts when the user increases text spacing.
+      The content reflows and remains readable without clipping or overlap.
+    </p>
+
+    <p>
+      This satisfies WCAG 2.1 Success Criterion 1.4.12.
+    </p>
+  </div>
+
+  <!-- ❌ NOT ADOPTING CONTENT -->
+  <h2>❌ Content NOT Adopting Text Spacing (Fail)</h2>
+  <div class="container not-adopting">
+    <span class="label">Why this FAILS:</span>
+    <p>
+      This text does not respond to user-applied spacing. When spacing is enabled,
+      text is clipped and unreadable because of fixed height and nowrap styles.
+    </p>
+  </div>
+
+  <div class="note">
+    <strong>WCAG 1.4.12 Reminder:</strong><br />
+    Content must remain usable when all of the following are applied:
+    <ul>
+      <li>Line height: <code>1.5</code></li>
+      <li>Paragraph spacing: <code>2× font size</code></li>
+      <li>Letter spacing: <code>0.12em</code></li>
+      <li>Word spacing: <code>0.16em</code></li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>
